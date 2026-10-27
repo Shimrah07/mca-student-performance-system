@@ -1,0 +1,90 @@
+# =============================================================
+# AI-Based Student Performance Prediction & Academic Support System
+# .gitignore
+# =============================================================
+
+# ----- Python -----
+# Virtual environments (never commit these)
+venv/
+.venv/
+env/
+.env_dir/
+**/venv/
+**/.venv/
+
+# Byte-compiled / optimised / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyd
+
+# Distribution / packaging
+*.egg-info/
+dist/
+build/
+*.egg
+MANIFEST
+
+# Unit test / coverage reports
+.coverage
+htmlcov/
+.pytest_cache/
+*.coveragerc
+
+# ----- Environment Variables / Secrets -----
+# NEVER commit actual .env files — they contain database passwords
+.env
+.env.local
+.env.*.local
+*.env
+
+# ----- Node.js / React -----
+# Dependencies folder — installed locally, not committed (can be 200-300 MB)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Vite build output
+frontend/dist/
+frontend/.vite/
+
+# ----- ML Data and Model Artifacts -----
+# Dataset files — may contain student/personal data; not committed
+ml/data/
+
+# Saved model files — large binary artifacts
+# Strategy for sharing the final model will be decided later
+ml/models/
+*.joblib
+*.pkl
+*.pickle
+*.h5
+*.onnx
+
+# Jupyter notebook checkpoints
+.ipynb_checkpoints/
+
+# ----- OS / Editor -----
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# VS Code
+.vscode/
+*.code-workspace
+
+# JetBrains IDEs
+.idea/
+*.iml
+
+# ----- Logs -----
+*.log
+logs/

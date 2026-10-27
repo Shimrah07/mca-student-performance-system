@@ -1,0 +1,34 @@
+# =============================================================
+# backend/requirements.txt
+# AI-Based Student Performance Prediction & Academic Support System
+#
+# Install with:
+#   cd backend
+#   pip install -r requirements.txt
+#
+# All packages below have verified Python 3.14 wheels (checked 2026-10-23).
+# =============================================================
+
+# --- Web framework & server ---
+fastapi>=0.161.0          # REST API framework
+uvicorn[standard]>=0.54.0 # ASGI server to run FastAPI
+
+# --- Data validation ---
+pydantic>=2.14.0          # Request/response schema validation (bundled with FastAPI)
+
+# --- Database ---
+sqlalchemy>=2.0.0         # ORM for MySQL (tables defined as Python classes)
+pymysql>=1.1.0            # MySQL driver for Python (pure Python, no C compiler needed)
+python-dotenv>=1.0.0      # Loads .env files into environment variables
+
+# --- Machine Learning (used in offline training AND loaded in backend) ---
+scikit-learn>=1.9.0       # Logistic Regression, Decision Tree, Random Forest
+joblib>=1.4.0             # Save and load trained model + preprocessing pipeline
+
+# --- Data processing (used mainly in offline notebooks) ---
+pandas>=3.1.0             # Data loading, cleaning, feature preparation
+numpy>=2.5.0              # Numerical operations
+
+# --- Testing ---
+pytest>=8.0.0             # Basic test runner
+httpx>=0.28.0             # Test HTTP client for FastAPI (used with pytest)
