@@ -51,16 +51,25 @@ frontend/.vite/
 
 # ----- ML Data and Model Artifacts -----
 # Dataset files — may contain student/personal data; not committed
-ml/data/
+ml/data/*
+!ml/data/synthetic/
 
 # Saved model files — large binary artifacts
-# Strategy for sharing the final model will be decided later
 ml/models/
 *.joblib
 *.pkl
 *.pickle
 *.h5
 *.onnx
+
+# Allow required MCA model artifacts & synthetic demonstration dataset
+!ml/artifacts/
+!ml/artifacts/mca/
+!ml/artifacts/mca/*.joblib
+!ml/artifacts/mca/*.json
+!ml/data/synthetic/
+!ml/data/synthetic/*.csv
+!ml/data/synthetic/*.md
 
 # Jupyter notebook checkpoints
 .ipynb_checkpoints/
@@ -88,3 +97,6 @@ $RECYCLE.BIN/
 # ----- Logs -----
 *.log
 logs/
+
+# Scratch directory
+scratch/

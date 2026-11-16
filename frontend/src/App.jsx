@@ -1,122 +1,65 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+/**
+ * frontend/src/App.jsx
+ *
+ * Master Application Shell with persistent left sidebar navigation
+ * and spacious main content area.
+ * Inspired by minimal, high-end academic SaaS product design.
+ */
 
-function App() {
-  const [count, setCount] = useState(0)
+import { useState } from "react";
+import Sidebar from "./components/Sidebar";
+import TopBar from "./components/TopBar";
+import McaOverview from "./components/mca/McaOverview";
+import McaCurriculumBrowser from "./components/mca/McaCurriculumBrowser";
+import McaSubjectPredictionForm from "./components/mca/McaSubjectPredictionForm";
+import McaSemesterPredictionForm from "./components/mca/McaSemesterPredictionForm";
+import McaPredictionHistoryPanel from "./components/mca/McaPredictionHistoryPanel";
+import AboutModal from "./components/AboutModal";
+import "./App.css";
+
+export default function App() {
+  const [activeTab, setActiveTab] = useState("overview");
+  const [sidebarOpen, setSidebarOpen] = useState(false);
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="app-shell">
+      {/* Persistent Left Sidebar with Mobile Drawer support */}
+      <Sidebar
+        activeTab={activeTab}
+        setActiveTab={setActiveTab}
+        isOpen={sidebarOpen}
+        onClose={() => setSidebarOpen(false)}
+      />
 
-      <div className="ticks"></div>
+      {/* Main Content Area */}
+      <div className="main-wrapper">
+        <TopBar
+          activeTab={activeTab}
+          onNavigate={(tab) => setActiveTab(tab)}
+          onOpenSidebar={() => setSidebarOpen(true)}
+        />
 
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
+        <main className="main-content">
+          {activeTab === "overview" && (
+            <McaOverview onNavigate={(tab) => setActiveTab(tab)} />
+          )}
+          {activeTab === "curriculum" && <McaCurriculumBrowser />}
+          {activeTab === "subject" && <McaSubjectPredictionForm />}
+          {activeTab === "semester" && <McaSemesterPredictionForm />}
+          {activeTab === "history" && <McaPredictionHistoryPanel />}
+          {activeTab === "about" && <AboutModal />}
+        </main>
 
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+        <footer className="academic-footer">
+          <div className="footer-title">
+            <strong>AI-Based Student Performance Prediction &amp; Academic Support System</strong>
+            <span className="footer-badge">MCA 3rd Sem Minor Project</span>
+          </div>
+          <div className="footer-subtext">
+            Department of Computer Applications · UIT-RGPV (Autonomous), Bhopal · Academic Session 2026–27
+          </div>
+        </footer>
+      </div>
+    </div>
+  );
 }
-
-export default App

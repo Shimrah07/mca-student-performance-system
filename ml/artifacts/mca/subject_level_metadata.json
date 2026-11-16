@@ -1,0 +1,155 @@
+{
+  "scope": "subject_level",
+  "dataset_type": "synthetic_prototype",
+  "dataset_version": "2026-11-13",
+  "synthetic_data_disclaimer": "This model was trained exclusively on synthetic/prototype data (Phase 3A). It is NOT trained on real UIT-RGPV student records, does NOT reflect actual institutional grading regulations, and must NOT be represented as real academic accuracy.",
+  "training_timestamp": "2026-11-13T10:30:40.849169+00:00",
+  "total_rows": 6370,
+  "train_rows": 5066,
+  "test_rows": 1304,
+  "train_unique_students": 960,
+  "test_unique_students": 240,
+  "target_classes": [
+    "Average",
+    "Excellent",
+    "Good",
+    "Needs Improvement"
+  ],
+  "feature_names": [
+    "semester_number",
+    "course_type",
+    "attendance_percentage",
+    "mst1_marks",
+    "mst2_marks",
+    "assignment_marks",
+    "prior_sgpa",
+    "prior_cgpa",
+    "viva_marks",
+    "lab_journal_marks",
+    "synopsis_approved",
+    "design_approved",
+    "implementation_percentage",
+    "faculty_guide_interaction_score"
+  ],
+  "numeric_features": [
+    "semester_number",
+    "attendance_percentage",
+    "mst1_marks",
+    "mst2_marks",
+    "assignment_marks",
+    "prior_sgpa",
+    "prior_cgpa",
+    "viva_marks",
+    "lab_journal_marks",
+    "synopsis_approved",
+    "design_approved",
+    "implementation_percentage",
+    "faculty_guide_interaction_score"
+  ],
+  "categorical_features": [
+    "course_type"
+  ],
+  "train_class_distribution": {
+    "Excellent": 1547,
+    "Average": 1215,
+    "Good": 1153,
+    "Needs Improvement": 1151
+  },
+  "test_class_distribution": {
+    "Needs Improvement": 363,
+    "Excellent": 353,
+    "Average": 325,
+    "Good": 263
+  },
+  "selected_algorithm": "Logistic Regression",
+  "selected_macro_f1": 0.6732,
+  "evaluation_metrics": {
+    "accuracy": 0.691,
+    "balanced_accuracy": 0.6754,
+    "macro_precision": 0.6733,
+    "macro_recall": 0.6754,
+    "macro_f1": 0.6732,
+    "per_class": {
+      "Average": {
+        "precision": 0.5833,
+        "recall": 0.5385,
+        "f1-score": 0.56,
+        "support": 325
+      },
+      "Excellent": {
+        "precision": 0.7625,
+        "recall": 0.864,
+        "f1-score": 0.8101,
+        "support": 353
+      },
+      "Good": {
+        "precision": 0.5175,
+        "recall": 0.5057,
+        "f1-score": 0.5115,
+        "support": 263
+      },
+      "Needs Improvement": {
+        "precision": 0.83,
+        "recall": 0.7934,
+        "f1-score": 0.8113,
+        "support": 363
+      }
+    },
+    "confusion_matrix": [
+      [
+        175,
+        19,
+        73,
+        58
+      ],
+      [
+        4,
+        305,
+        44,
+        0
+      ],
+      [
+        62,
+        67,
+        133,
+        1
+      ],
+      [
+        59,
+        9,
+        7,
+        288
+      ]
+    ],
+    "classes": [
+      "Average",
+      "Excellent",
+      "Good",
+      "Needs Improvement"
+    ]
+  },
+  "all_models_comparison": {
+    "Majority Baseline": {
+      "accuracy": 0.2707,
+      "balanced_accuracy": 0.25,
+      "macro_f1": 0.1065
+    },
+    "Logistic Regression": {
+      "accuracy": 0.691,
+      "balanced_accuracy": 0.6754,
+      "macro_f1": 0.6732
+    },
+    "Decision Tree": {
+      "accuracy": 0.6097,
+      "balanced_accuracy": 0.5946,
+      "macro_f1": 0.5972
+    },
+    "Random Forest": {
+      "accuracy": 0.6894,
+      "balanced_accuracy": 0.6733,
+      "macro_f1": 0.6709
+    }
+  },
+  "train_test_split_method": "GroupShuffleSplit(student_id, test_size=0.2)",
+  "random_seed": 42
+}
